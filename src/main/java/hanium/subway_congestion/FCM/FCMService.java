@@ -9,6 +9,7 @@ import hanium.subway_congestion.User.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -20,26 +21,27 @@ public class FCMService {
 
     public String sendNotification(FCMRequestDto requestDto) throws ExecutionException, InterruptedException {
         List<User> userList = userRepository.findAllUser();
+        List<String> tempList = new ArrayList<>();
 
         if(!userList.isEmpty()){
-            for (User it : userList){
-                Notification notification = Notification.builder()
-                        .setTitle(requestDto.getTitle())
-                        .setBody(requestDto.getBody())
-                        .build();
+            try {
+                for (User it : userList){
+                    Notification notification = Notification.builder()
+                            .setTitle(requestDto.getTitle())
+                            .setBody(requestDto.getBody())
+                            .build();
 
-                Message message = Message.builder()
-                        .setToken(it.getToken())
-                        .setNotification(notification)
-                        .build();
-
-                try {
+                    Message message = Message.builder()
+                            .setToken(it.getToken())
+                            .setNotification(notification)
+                            .build();
                     firebaseMessaging.send(message);
-                    return "알림을 성공적으로 전송했습니다. user=" + it.getUserId();
-                } catch (FirebaseMessagingException e) {
-                    e.printStackTrace();
-                    return "알림 보내기 실패했습니다. user=" + it.getUserId();
+                    tempList.add(it.getUserId());
                 }
+                return "모든 알림을 성공적으로 전송했습니다." + tempList.toString();
+            } catch (FirebaseMessagingException e) {
+                e.printStackTrace();
+                return "모든 알림 보내기 실패했습니다." + tempList.toString();
             }
         }
 
