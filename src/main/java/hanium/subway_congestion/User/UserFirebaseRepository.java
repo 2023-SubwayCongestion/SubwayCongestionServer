@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutionException;
 @Repository
 @Slf4j
 public class UserFirebaseRepository implements UserRepository{
-    public static final String COLLECTION_NAME = "userInfo";
+    public static final String COLLECTION_NAME = "user_data";
 
     @Override
     public List<User> findAllUser() throws ExecutionException, InterruptedException {

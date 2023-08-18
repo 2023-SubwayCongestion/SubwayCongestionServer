@@ -20,46 +20,48 @@ import java.util.List;
 public class FirebaseConfig {
 
     @PostConstruct
-    public void init(){
-        try{
-            FileInputStream serviceAccount =
+    public void init() {
+        try {
+            FileInputStream serviceAccountFile =
                     new FileInputStream("src/main/resources/firebase/serviceAccountKey.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+                    .setCredentials(GoogleCredentials.fromStream(serviceAccountFile))
                     .setDatabaseUrl("https://subwaycongestion-default-rtdb.asia-southeast1.firebasedatabase.app")
                     .build();
 
             FirebaseApp.initializeApp(options);
 
-        }catch (Exception e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Bean
-    FirebaseMessaging firebaseMessaging() throws IOException{
-        ClassPathResource resource = new ClassPathResource("firebase/serviceAccountKey.json");
-        InputStream refreshToken = resource.getInputStream();
-        FirebaseApp firebaseApp = null;
+    FirebaseMessaging firebaseMessaging() throws IOException {
+        FirebaseApp firebaseApp = getOrCreateFirebaseApp();
+        return FirebaseMessaging.getInstance(firebaseApp);
+    }
+
+    private FirebaseApp getOrCreateFirebaseApp() throws IOException {
         List<FirebaseApp> firebaseAppList = FirebaseApp.getApps();
 
-        if (firebaseAppList != null || !firebaseAppList.isEmpty()){
-            for (FirebaseApp app : firebaseAppList){
-                if(app.getName().equals(firebaseApp.DEFAULT_APP_NAME)) {
-                    firebaseApp = app;
+        if (firebaseAppList != null && !firebaseAppList.isEmpty()) {
+            for (FirebaseApp app : firebaseAppList) {
+                if (app.getName().equals(FirebaseApp.DEFAULT_APP_NAME)) {
+                    return app;
                 }
             }
         }
-        else {
-            FirebaseOptions options = FirebaseOptions.builder()
-                    .setCredentials(GoogleCredentials.fromStream(refreshToken))
-                    .build();
 
-            firebaseApp = FirebaseApp.initializeApp();
-        }
+        ClassPathResource resource = new ClassPathResource("firebase/serviceAccountKey.json");
+        InputStream refreshToken = resource.getInputStream();
 
-        return FirebaseMessaging.getInstance(firebaseApp);
+        FirebaseOptions options = FirebaseOptions.builder()
+                .setCredentials(GoogleCredentials.fromStream(refreshToken))
+                .build();
+
+        return FirebaseApp.initializeApp(options);
     }
 
 

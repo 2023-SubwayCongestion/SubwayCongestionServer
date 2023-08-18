@@ -10,7 +10,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class User {
-    private String firbaseToken;
-    private String email;
-    private String password;
+    private String token;
+    private String userId;
 }

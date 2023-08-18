@@ -3,6 +3,7 @@ package hanium.subway_congestion.FCM;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,9 +16,9 @@ public class FCMController {
     private final FCMService fcmService;
 
     @PostMapping
-    public String sendNotification(FCMRequestDto requestDto, Model model) throws ExecutionException, InterruptedException {
+    public String sendNotification(@RequestBody FCMRequestDto requestDto, Model model) throws ExecutionException, InterruptedException {
         String result = fcmService.sendNotification(requestDto);
         model.addAttribute("result", result);
-        return "result";
+        return result;
     }
 }
