@@ -19,50 +19,30 @@ public class FCMService {
     private final UserRepository userRepository;
 
     public String sendNotification(FCMRequestDto requestDto) throws ExecutionException, InterruptedException {
+        List<User> userList = userRepository.findAllUser();
 
-        String token = "ckIV8lXtQw-FJRc8CYUlC6:APA91bFXavpsJhExAyQVhHAMeZTrb2FM-Hj_c5Pk6TA5BhPnJ5CPcvlj9OHzhZAQprKFFk8r7Nywm53Q6gchO2kwdBP5j2GzBvHyDaZO1CuAGGhU-S3z2J0jpiz6wSzI3JTl_lcIQ5K3";
-        Notification notification = Notification.builder()
-                .setTitle(requestDto.getTitle())
-                .setBody(requestDto.getBody())
-                .build();
+        if(!userList.isEmpty()){
+            for (User it : userList){
+                Notification notification = Notification.builder()
+                        .setTitle(requestDto.getTitle())
+                        .setBody(requestDto.getBody())
+                        .build();
 
-        Message message = Message.builder()
-                .setToken(token)
-                .setNotification(notification)
-                .build();
+                Message message = Message.builder()
+                        .setToken(it.getToken())
+                        .setNotification(notification)
+                        .build();
 
-        try {
-            firebaseMessaging.send(message);
-            return "알림을 성공적으로 전송했습니다. user=" + token;
-        } catch (FirebaseMessagingException e) {
-            e.printStackTrace();
-            return "알림 보내기 실패했습니다. user=" + token;
+                try {
+                    firebaseMessaging.send(message);
+                    return "알림을 성공적으로 전송했습니다. user=" + it.getUserId();
+                } catch (FirebaseMessagingException e) {
+                    e.printStackTrace();
+                    return "알림 보내기 실패했습니다. user=" + it.getUserId();
+                }
+            }
         }
 
-//        List<User> userList = userRepository.findAllUser();
-
-//        if(!userList.isEmpty()){
-//            for (User it : userList){
-//                Notification notification = Notification.builder()
-//                        .setTitle(requestDto.getTitle())
-//                        .setBody(requestDto.getBody())
-//                        .build();
-//
-//                Message message = Message.builder()
-//                        .setToken(it.getFirbaseToken())
-//                        .setNotification(notification)
-//                        .build();
-//
-//                try {
-//                    firebaseMessaging.send(message);
-//                    return "알림을 성공적으로 전송했습니다. user=" + it.getEmail();
-//                } catch (FirebaseMessagingException e) {
-//                    e.printStackTrace();
-//                    return "알림 보내기 실패했습니다. user=" + it.getEmail();
-//                }
-//            }
-//        }
-
-//        return "서버에 저장된 유저의 FirebaseToken이 존재하지 않습니다";
+        return "서버에 저장된 유저의 FirebaseToken이 존재하지 않습니다";
     }
 }
