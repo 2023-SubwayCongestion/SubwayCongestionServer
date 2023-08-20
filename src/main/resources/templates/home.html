@@ -10,7 +10,7 @@
   <div class="nav">
     <img th:src="@{/img/logo.png}"  alt="!LOGO" src="../static/img/logo.png">
     <input placeholder="search">
-    <a href="/notification"><img th:src="@{/img/icon_bells.png}" alt="!알림" src="../static/img/icon_bell.png"></a>
+    <a href="/notification"><img th:src="@{/img/icon_bell.png}" alt="!알림" src="../static/img/icon_bell.png"></a>
   </div>
 <div class="content">
   <ul class="content_reportList">
@@ -23,13 +23,14 @@
           </ul>
       </li>
       <hr>
-      <li class="item">
-          <a href="#">
+      <li th:each="report : ${list}" class="item">
+          <a th:href='@{/report/${report.getTitle()}}' href="#">
               <ul>
-                  <li>심각합니다 ㅜㅜ!</li>
-                  <li>충무로</li>
-                  <li>2023-08-23</li>
-                  <li class="status"><img th:src="@{/img/status_${1}.png}" alt="!상태" src="../static/img/status_1.png"><p th:text="${'안 읽음'}">안 읽음</p></li>
+                  <li th:text="${report.getTitle()}">신고 제목</li>
+                  <li th:text="${report.getStation()}">신고 역</li>
+                  <li th:text="${report.getTimestamp().substring(0, 10)}">신고 날짜</li>
+                  <li class="status"><img th:src="@{'/img/status_' + ${report.getStatus()} + '.png'}" alt="!상태" src="../static/img/status_0.png">
+                      <p th:text="${(report.getStatus() == 1) ? '읽음' : '안 읽음'}">안 읽음</p></li>
               </ul>
           </a>
       </li>
