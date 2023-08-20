@@ -24,7 +24,7 @@
       </li>
       <hr>
       <li th:each="report : ${list}" class="item">
-          <a th:href='@{/report/${report.getTitle()}}' href="#">
+          <a th:href="@{'/report/' + ${report.getId()}}" href="#">
               <ul>
                   <li th:text="${report.getTitle()}">신고 제목</li>
                   <li th:text="${report.getStation()}">신고 역</li>

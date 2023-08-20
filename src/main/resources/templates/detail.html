@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>지옥철-관리자</title>
+  <link th:href="@{/css/detailStyle.css}" rel="stylesheet" href="../static/css/detailStyle.css">
+</head>
+<body>
+  <div class="nav">
+    <img th:src="@{/img/logo.png}"  alt="!LOGO" src="../static/img/logo.png">
+  </div>
+  <ul class="content">
+    <li class="content_title"><p th:text="${report.getTitle()}">신고 제목</p></li>
+    <li class="content_body"><p th:text="${report.getContent()}">신고 내용</p></li>
+    <li><ul class="content_info">
+      <p th:text="${report.getStation()}">역 이름</p>
+      <p th:text="${report.getDirection()}">방면</p>
+      <p th:text="${report.getTimestamp()}">날짜 시간</p>
+    </ul></li>
+    <li class="content_exit"><button onclick="location.href='/'">나가기</button></li>
+  </ul>
+</body>
+</html>

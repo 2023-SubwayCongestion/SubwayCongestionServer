@@ -16,7 +16,6 @@ input{
 
 body{
     width: 100vw;
-    height: vh;
     background-color: var(--color-gray);
     display: flex;
     flex-direction: column;
@@ -49,6 +48,10 @@ body::-webkit-scrollbar-thumb{
 .nav > img{
     padding-left: 2vw;
     width: 7vw;
+}
+
+.nav > a> img:hover{
+    opacity: 0.7;
 }
 
 .nav > input{
@@ -95,6 +98,10 @@ body::-webkit-scrollbar-thumb{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 5px 10px #89898929;
     border-radius: 10px;
+}
+
+.content .content_reportList .item > a > ul:hover{
+    opacity: 0.5;
 }
 
 .content .content_reportList > li >  ul > li,

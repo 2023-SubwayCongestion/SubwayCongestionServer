@@ -5,4 +5,5 @@ import java.util.concurrent.ExecutionException;
 
 public interface ReportRepository {
     List<Report> findAllReport() throws ExecutionException, InterruptedException;
+    ReportResponseDto findById(String id) throws ExecutionException, InterruptedException;
 }

@@ -1,0 +1,117 @@
+@import 'reset.css';
+
+:root{
+    --color-green: rgba(84, 162, 154, 1);
+    --color-gray: rgba(245, 245, 245, 1);
+    --font-color-gray: rgba(176, 176, 176, 1);
+
+    --size-nav: 1.3vw;
+}
+
+body{
+    width: 100vw;
+    height: vh;
+    background-color: var(--color-gray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 스크롤바 설정*/
+body::-webkit-scrollbar{
+    width: 1.66vw;
+}
+
+/* 스크롤바 막대 설정*/
+body::-webkit-scrollbar-thumb{
+    background-color: #E7E7E7;
+    /* 스크롤바 둥글게 설정    */
+    border-radius: 39px;
+
+}
+
+/* ==========================.nav========================== */
+.nav{
+    width: 100vw;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    background-color: var(--color-green);
+}
+
+.nav img{
+    padding-left: 2vh;
+}
+
+/* ==========================.content========================== */
+
+.content{
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content .content_title{
+    width: 80vw;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.content .content_title > p,
+.content .content_body > p
+{
+    padding-left: 1vw;
+}
+
+.content .content_title,
+.content .content_body,
+.content .content_info > p {
+    /* UI Properties */
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #89898929;
+    border-radius: 10px;
+}
+
+.content .content_body{
+    width: 80vw;
+    height: 30vh;
+    margin-bottom: 2vh;
+}
+
+.content .content_body > p{
+    padding-top: 2vh;
+}
+
+
+.content .content_info{
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .content_info > p {
+    width: 23vw;
+    height: 7vh;
+    margin-bottom: 2vh;
+    display: flex;
+    align-items: center;
+    padding-left: 1vh;
+}
+
+.content .content_exit{
+    align-self: flex-end;
+}
+
+.content .content_exit> button:hover{
+    opacity: 0.7;
+}
+
+.content .content_exit > button{
+    color: white;
+    width: 10vw;
+    height: 6vh;
+    background: #ff4a4a 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #89898929;
+    border-radius: 10px;
+}

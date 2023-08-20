@@ -15,7 +15,8 @@ public class Report {
     private String title;
     private String content;
     private String station;
-    public String direction;
+    private String direction;
     private String timestamp;
     private int status;
+    private String id;
 }
