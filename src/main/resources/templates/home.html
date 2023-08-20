@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>지옥철-관리자</title>
+  <link th:href="@{/css/homeStyle.css}" rel="stylesheet" href="../static/css/homeStyle.css">
+</head>
+<body>
+  <div class="nav">
+    <img th:src="@{/img/logo.png}"  alt="!LOGO" src="../static/img/logo.png">
+    <input placeholder="search">
+    <a href="/notification"><img th:src="@{/img/icon_bells.png}" alt="!알림" src="../static/img/icon_bell.png"></a>
+  </div>
+<div class="content">
+  <ul class="content_reportList">
+      <li>
+          <ul class="content_top">
+              <li>Title</li>
+              <li>Station</li>
+              <li>Date</li>
+              <li>Status</li>
+          </ul>
+      </li>
+      <hr>
+      <li class="item">
+          <a href="#">
+              <ul>
+                  <li>심각합니다 ㅜㅜ!</li>
+                  <li>충무로</li>
+                  <li>2023-08-23</li>
+                  <li class="status"><img th:src="@{/img/status_${1}.png}" alt="!상태" src="../static/img/status_1.png"><p th:text="${'안 읽음'}">안 읽음</p></li>
+              </ul>
+          </a>
+      </li>
+  </ul>
+</div>
+
+</body>
+</html>
