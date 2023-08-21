@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>지옥철-관리자</title>
+    <link th:href="@{/css/notificationStyle.css}" rel="stylesheet" href="../static/css/notificationStyle.css">
+</head>
+<body>
+<div class="nav">
+    <img th:src="@{/img/logo.png}"  alt="!LOGO" src="../static/img/logo.png">
+</div>
+<form class="inputBox" action="/notification" method="post">
+    <!-- <label for="title">제목:</label><br> -->
+    <input class="input_title" type="text" id="title" name="title" placeholder="제목"><br><br>
+    <!-- <label for="content">내용:</label><br> -->
+    <textarea class="input_content" id="body" name="body" rows="20" cols="100"  placeholder="내용"></textarea><br><br>
+    <div class="buttons">
+        <input class="input_submit" type="submit" value="보내기">
+        <div class="exitBox"><a href="/">나가기</a></div>
+    </div>
+</form>
+</body>
+</html>

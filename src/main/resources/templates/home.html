@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>지옥철-관리자</title>
+  <link th:href="@{/css/homeStyle.css}" rel="stylesheet" href="../static/css/homeStyle.css">
+</head>
+<body>
+  <div class="nav">
+    <img th:src="@{/img/logo.png}"  alt="!LOGO" src="../static/img/logo.png">
+    <input placeholder="search">
+    <a href="/notification"><img th:src="@{/img/icon_bell.png}" alt="!알림" src="../static/img/icon_bell.png"></a>
+  </div>
+<div class="content">
+  <ul class="content_reportList">
+      <li>
+          <ul class="content_top">
+              <li>Title</li>
+              <li>Station</li>
+              <li>Date</li>
+              <li>Status</li>
+          </ul>
+      </li>
+      <hr>
+      <li th:each="report : ${list}" class="item">
+          <a th:href="@{'/report/' + ${report.getId()}}" href="#">
+              <ul>
+                  <li th:text="${report.getTitle()}">신고 제목</li>
+                  <li th:text="${report.getStation()}">신고 역</li>
+                  <li th:text="${report.getTimestamp().substring(0, 10)}">신고 날짜</li>
+                  <li class="status"><img th:src="@{'/img/status_' + ${report.getStatus()} + '.png'}" alt="!상태" src="../static/img/status_0.png">
+                      <p th:text="${(report.getStatus() == 1) ? '읽음' : '안 읽음'}">안 읽음</p></li>
+              </ul>
+          </a>
+      </li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -12,8 +12,11 @@ import java.util.Date;
 @Setter
 @ToString
 public class Report {
-    private String userId;
     private String title;
     private String content;
-    private Date createdTime;
+    private String station;
+    private String direction;
+    private String timestamp;
+    private int status;
+    private String id;
 }

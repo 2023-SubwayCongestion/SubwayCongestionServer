@@ -3,9 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link th:href="@{/css/resultStyle.css}" rel="stylesheet" href="../static/css/resultStyle.css">
 </head>
 <body>
-<p th:text="${result}"></p>
+<div class="nav">
+    <img th:src="@{/img/logo.png}"  alt="!LOGO" src="../static/img/logo.png">
+</div>
+<p class="resultText" th:text="${result}">결과</p>
+<button class="exitButton" onclick="location.href='/'">home</button>
 </body>
 </html>

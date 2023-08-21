@@ -20,4 +20,8 @@ public class ReportService {
     List<Report> getReports() throws ExecutionException, InterruptedException {
         return reportRepository.findAllReport();
     }
+
+    ReportResponseDto findReport(String reportId) throws ExecutionException, InterruptedException {
+        return reportRepository.findById(reportId);
+    }
 }
