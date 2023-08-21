@@ -12,14 +12,21 @@ import java.util.concurrent.ExecutionException;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/api/notification")
+@RequestMapping("/notification")
 public class FCMController {
     private final FCMService fcmService;
 
     @PostMapping
-    public String sendNotification(@RequestBody FCMRequestDto requestDto) throws ExecutionException, InterruptedException {
+    public String sendNotification(FCMRequestDto requestDto, Model model) throws ExecutionException, InterruptedException {
         String result = fcmService.sendNotification(requestDto);
-        System.out.println(result);
+        model.addAttribute("result", result);
+        return "result";
+    }
+
+    @PostMapping("/test")
+    public String test(@RequestBody FCMRequestDto requestDto, Model model) throws ExecutionException, InterruptedException {
+        String result = fcmService.sendNotification(requestDto);
+        model.addAttribute("result", result);
         return "result";
     }
 }

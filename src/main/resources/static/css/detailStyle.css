@@ -10,7 +10,6 @@
 
 body{
     width: 100vw;
-    height: vh;
     background-color: var(--color-gray);
     display: flex;
     flex-direction: column;

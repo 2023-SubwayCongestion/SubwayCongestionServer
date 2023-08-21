@@ -14,7 +14,7 @@
     <li class="content_title"><p th:text="${report.getTitle()}">신고 제목</p></li>
     <li class="content_body"><p th:text="${report.getContent()}">신고 내용</p></li>
     <li><ul class="content_info">
-      <p th:text="${report.getStation()}">역 이름</p>
+      <p th:text="${report.getStation()} + '역'">역 이름</p>
       <p th:text="${report.getDirection()}">방면</p>
       <p th:text="${report.getTimestamp()}">날짜 시간</p>
     </ul></li>

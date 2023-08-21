@@ -36,7 +36,7 @@ public class FCMService {
                             .setNotification(notification)
                             .build();
                     firebaseMessaging.send(message);
-                    tempList.add(it.getUserId());
+                    tempList.add(it.getToken());
                 }
                 return "모든 알림을 성공적으로 전송했습니다." + tempList.toString();
             } catch (FirebaseMessagingException e) {
