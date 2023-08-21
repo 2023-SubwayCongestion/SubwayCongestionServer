@@ -22,6 +22,12 @@
 * !BREAKING CHANGE : 커다란 API 변경의 경우
 * !HOTFIX : 급하게 치명적인 버그를 고쳐야 하는 경우
 
+# 구현 화면
+
+https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/ba4edbb9-10df-453d-875c-9c9ebe134095
+
+
+
 # 예상 구현 화면
 ![image](https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/634f731c-ca85-4009-950f-a32f104a400b)
 ![image](https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/ff5d542f-44f2-4a96-8e4e-d3883078a8c4)
