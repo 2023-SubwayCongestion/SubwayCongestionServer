@@ -27,6 +27,7 @@ public class ReportController {
     @GetMapping("/report/{reportId}")
     public String getDetailReport(@PathVariable String reportId, Model model) throws ExecutionException, InterruptedException {
         ReportResponseDto report = reportService.findReport(reportId);
+        reportService.readReport(reportId);
         model.addAttribute("report", report);
         return "detail";
     }

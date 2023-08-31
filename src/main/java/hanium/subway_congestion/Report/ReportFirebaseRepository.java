@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import com.google.api.core.ApiFuture;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
+import com.google.cloud.firestore.*;
 import com.google.firebase.cloud.FirestoreClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -47,6 +45,30 @@ public class ReportFirebaseRepository implements ReportRepository {
         }
         return null;
     }
+
+    @Override
+    public boolean updateRead(String id) throws ExecutionException, InterruptedException {
+        if(items == null) items = getDocuments();
+
+        Firestore db = FirestoreClient.getFirestore();
+
+        for (QueryDocumentSnapshot document : items) {
+            if (document.getId().equals(id)) {
+                Report report = document.toObject(Report.class);
+
+                // status가 0인 경우만 업데이트 진행
+                if(report.getStatus() == 0){
+                    report.setStatus(1); // 상태 변경
+                    DocumentReference docRef = db.collection(COLLECTION_NAME).document(id);
+                    ApiFuture<WriteResult> writeResult = docRef.update("status", report.getStatus());
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 
     public List<QueryDocumentSnapshot> getDocuments() throws ExecutionException, InterruptedException {
         Firestore db = FirestoreClient.getFirestore();
