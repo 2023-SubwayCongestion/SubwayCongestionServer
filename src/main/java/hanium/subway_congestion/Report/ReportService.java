@@ -24,4 +24,8 @@ public class ReportService {
     ReportResponseDto findReport(String reportId) throws ExecutionException, InterruptedException {
         return reportRepository.findById(reportId);
     }
+
+    Boolean readReport(String reportId) throws ExecutionException, InterruptedException {
+        return reportRepository.updateRead(reportId);
+    }
 }
