@@ -9,7 +9,8 @@
 <br>
 
 ### 🚎 시연 영상
-https://github.com/2023-SubwayCongestion/SubwayCongestion/assets/23547185/ab698f5f-08f2-4351-848c-06ff2e946dda
+https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/9a1b5210-558f-40e5-852d-76395854c7ed
+
 
 <br>
 
