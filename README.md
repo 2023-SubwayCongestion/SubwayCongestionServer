@@ -1,5 +1,5 @@
 ### 🚎 Subway Congestion
-<img src="https://avatars.githubusercontent.com/u/137379087?s=200&v=4" width=200px alt="강현우"/>
+<img src="https://avatars.githubusercontent.com/u/137379087?s=200&v=4" width=100px alt="강현우"/>
 
 <br>
 
