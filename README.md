@@ -1,7 +1,6 @@
 ### 🚎 Subway Congestion
 <img src="https://avatars.githubusercontent.com/u/137379087?s=200&v=4" width=100px alt="강현우"/>
 
-<br>
 
 ### 🚎 서비스 구조
 <img src="https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/4a9c84af-3315-495f-8c47-1a97a0b01568" width=400px alt="강현우"/><br>
