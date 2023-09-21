@@ -4,8 +4,9 @@
 <br>
 
 ### 🚎 서비스 구조
-![image](https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/4a9c84af-3315-495f-8c47-1a97a0b01568)
-![image](https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/2c7f0280-5335-456c-993d-7d172cd46815)
+<img src="https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/4a9c84af-3315-495f-8c47-1a97a0b01568" width=400px alt="강현우"/><br>
+<img src="https://github.com/2023-SubwayCongestion/SubwayCongestionServer/assets/23547185/2c7f0280-5335-456c-993d-7d172cd46815" width=400px alt="강현우"/>
+
 
 <br>
 
